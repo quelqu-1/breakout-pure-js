@@ -137,7 +137,6 @@ function draw() {
         } else { 
         alert("GAME OVER");
         document.location.reload();
-        clearInterval(interval);
         }
     }
 
@@ -155,6 +154,8 @@ function draw() {
 
     x += dx;
     y += dy;
+
+    requestAnimationFrame(draw);
 }
 
 function detectCollision() {
@@ -170,7 +171,6 @@ function detectCollision() {
                     if (score == winScore) {
                         alert("YOU WIN! CONGRATULATIONS!\nSCORE: " + score);
                         document.location.reload();
-                        clearInterval(interval);
                     }
                 }
             }
@@ -178,4 +178,4 @@ function detectCollision() {
     }
 }
 
-let interval = setInterval(draw, 10);
+draw();
